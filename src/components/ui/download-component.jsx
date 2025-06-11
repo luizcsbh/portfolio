@@ -4,7 +4,7 @@ const DownloadComponent = () => {
   return (
     <div>
       <a 
-        href="/public/curriculo.pdf" 
+        href="/dist/curriculo.pdf" 
         download="Currículo Luiz Santos.pdf"
       >
         Download CV
