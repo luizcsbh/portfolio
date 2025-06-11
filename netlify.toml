@@ -3,4 +3,4 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "18" # Versão do Node.js
+  NODE_VERSION = "22" # Versão do Node.js
