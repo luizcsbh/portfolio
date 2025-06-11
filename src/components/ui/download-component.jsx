@@ -11,7 +11,7 @@ const DownloadComponent = () => {
     <div>
       <a 
         href={pdfPath} 
-        download
+        download={'Curriculo Luiz Santos.pdf'}
         onClick={(e) => {
           if (!pdfPath) {
             e.preventDefault();
