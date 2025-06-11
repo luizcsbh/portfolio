@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button.jsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 import { Badge } from '@/components/ui/badge.jsx';
-import { Github, Linkedin, Mail, ExternalLink, Code, Infinity as InfinityIcon, AppWindow, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Github, Linkedin, Mail, ExternalLink, Code,Infinity as InfinityIcon, AppWindow, ChevronLeft, ChevronRight, Sun, Moon } from 'lucide-react';
+import { useTheme } from './hooks/use-theme.js';
 import profilePhoto from './assets/profile-photo.jpg';
 import './App.css';
-import DownloadComponent from './components/ui/download-component';
 
 const config = {
   GITHUB_USERNAME: import.meta.env.VITE_GITHUB_USERNAME,
@@ -18,7 +18,9 @@ if (import.meta.env.DEV) {
   console.log('Configurações carregadas:', config);
 }
 
+
 function App() {
+  const [theme, toggleTheme] = useTheme();
   const [allRepos, setAllRepos] = useState([]);
   const [displayedRepos, setDisplayedRepos] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +28,7 @@ function App() {
   const [userData, setUserData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const reposPerPage = 6;
-
+  
   useEffect(() => {
     const fetchGitHubData = async () => {
       try {
@@ -110,6 +112,19 @@ function App() {
               <a href="#habilidades" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">Habilidades</a>
               <a href="#contato" className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">Contato</a>
             </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleTheme}
+              className="ml-4"
+              aria-label="Alternar tema"
+            >
+              {theme === 'light' ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
+            </Button>
           </div>
         </div>
       </nav>
@@ -129,7 +144,7 @@ function App() {
               Luiz Santos
             </h1>
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8">
-               Software Engineer Full Stack | PHP | Laravel | React | Docker | CI/CD | Git
+            Software Engineer Full Stack | PHP | Laravel | React | Docker | CI/CD | Git
             </p>
             <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto mb-8">
               Especialista em criar experiências digitais modernas e funcionais. 
@@ -139,8 +154,15 @@ function App() {
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                 <a href="#projetos" rel="noopener noreferrer">Ver Projetos</a>
               </Button>
-              <Button variant="outline" size="lg">
-                <DownloadComponent/>
+              <Button variant="outline" size="lg" asChild>
+                <a 
+                  href="/curriculo.pdf" 
+                  download="Curriculo_Luiz_Santos.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Download CV
+                </a>
               </Button>
             </div>
           </div>
@@ -381,6 +403,7 @@ function App() {
           </div>
         </div>
       </section>
+      
       {/* Footer */}
       <footer className="bg-slate-900 dark:bg-slate-950 text-white py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center">
@@ -394,3 +417,4 @@ function App() {
 }
 
 export default App;
+

@@ -6,6 +6,9 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   base: '/',
+  build: {
+    assetsInclude: ['**/*.pdf'] // Para incluir arquivos PDF no build
+  },
   plugins: [react(),tailwindcss()],
   resolve: {
     alias: {

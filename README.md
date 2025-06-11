@@ -1,5 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2b7bb2c9-f6a9-4feb-9309-1177a4cfc4c8/deploy-status)](https://app.netlify.com/projects/portfolioluizsantos/deploys)
-
 # Portfólio de Desenvolvedor Web
 
 Este é um site de portfólio moderno e responsivo criado com React, Tailwind CSS e componentes shadcn/ui.
@@ -8,10 +6,12 @@ Este é um site de portfólio moderno e responsivo criado com React, Tailwind CS
 
 - **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
 - **Interface Moderna**: Design limpo e profissional com gradientes e animações suaves
+- **Tema Claro/Escuro**: Alternância suave entre temas com persistência da preferência do usuário
 - **Componentes Reutilizáveis**: Construído com componentes shadcn/ui para consistência
 - **Navegação Suave**: Links de navegação que levam às seções correspondentes
 - **Otimizado para SEO**: Meta tags e estrutura semântica para melhor indexação
 - **Performance**: Código otimizado e imagens comprimidas
+- **Acessibilidade**: Contraste adequado e navegação por teclado
 
 ## 📋 Seções Incluídas
 
@@ -22,14 +22,31 @@ Este é um site de portfólio moderno e responsivo criado com React, Tailwind CS
 5. **Contato**: Informações de contato e links para redes sociais
 6. **Footer**: Informações de copyright
 
+## 🌙 Funcionalidade de Tema
+
+O portfólio inclui um sistema completo de tema claro/escuro:
+
+- **Alternância Automática**: Detecta a preferência do sistema operacional
+- **Botão de Alternância**: Ícone na navbar para alternar manualmente
+- **Persistência**: Salva a preferência do usuário no localStorage
+- **Transições Suaves**: Animações de 300ms para mudanças de cor
+- **Acessibilidade**: Contraste adequado em ambos os temas
+
+### Como Usar o Tema
+
+1. **Automático**: O tema é detectado automaticamente baseado na preferência do sistema
+2. **Manual**: Clique no ícone de lua/sol na navbar para alternar
+3. **Persistente**: Sua escolha é salva e mantida entre sessões
+
 ## 🛠️ Tecnologias Utilizadas
 
 - **React 18**: Framework JavaScript para interface de usuário
 - **Vite**: Build tool rápido e moderno
-- **Tailwind CSS**: Framework CSS utilitário
+- **Tailwind CSS**: Framework CSS utilitário com suporte a dark mode
 - **shadcn/ui**: Biblioteca de componentes React
 - **Lucide React**: Ícones modernos e consistentes
 - **Framer Motion**: Animações suaves (pré-configurado)
+- **Custom Hooks**: Hook personalizado para gerenciamento de tema
 
 ## 📦 Como Executar
 
@@ -90,11 +107,23 @@ O projeto usa Tailwind CSS com tema personalizado definido em `src/App.css`. Par
 2. **Modo escuro**: Ajuste as variáveis na classe `.dark`
 3. **Componentes**: Use as classes do Tailwind ou modifique os componentes shadcn/ui
 
+### Personalizando o Sistema de Tema
+
+O hook `useTheme` em `src/hooks/use-theme.js` gerencia o sistema de tema:
+
+```javascript
+const { theme, toggleTheme } = useTheme();
+```
+
+- **theme**: Estado atual ('light' ou 'dark')
+- **toggleTheme**: Função para alternar entre temas
+
 ### Adicionando Novas Seções
 
 1. Crie um novo componente ou adicione JSX ao `App.jsx`
 2. Adicione um link na navegação
 3. Implemente scroll suave com IDs correspondentes
+4. Certifique-se de que as cores funcionam em ambos os temas
 
 ## 🌐 Deploy
 
@@ -122,6 +151,7 @@ O projeto já está configurado para produção com:
 - Otimização de imagens
 - Tree shaking para reduzir tamanho do bundle
 - Compressão gzip
+- Suporte completo a dark mode
 
 ## 📱 Responsividade
 
@@ -130,6 +160,17 @@ O site é totalmente responsivo e foi testado em:
 - Laptop (1024px - 1919px)
 - Tablet (768px - 1023px)
 - Mobile (320px - 767px)
+
+Ambos os temas (claro e escuro) são totalmente responsivos.
+
+## ♿ Acessibilidade
+
+O portfólio segue as melhores práticas de acessibilidade:
+- Contraste adequado em ambos os temas (WCAG AA)
+- Navegação por teclado
+- Labels apropriados para elementos interativos
+- Estrutura semântica HTML
+- Suporte a leitores de tela
 
 ## 🔧 Estrutura do Projeto
 
@@ -142,8 +183,10 @@ portfolio-desenvolvedor/
 │   │   └── profile-photo.jpg
 │   ├── components/
 │   │   └── ui/
-│   ├── App.jsx
-│   ├── App.css
+│   ├── hooks/
+│   │   └── use-theme.js          # Hook para gerenciamento de tema
+│   ├── App.jsx                   # Componente principal
+│   ├── App.css                   # Estilos e variáveis de tema
 │   ├── index.css
 │   └── main.jsx
 ├── index.html
@@ -151,6 +194,21 @@ portfolio-desenvolvedor/
 ├── tailwind.config.js
 └── vite.config.js
 ```
+
+## 🆕 Novas Funcionalidades (v2.0)
+
+### Sistema de Tema Claro/Escuro
+- ✅ Hook personalizado `useTheme`
+- ✅ Botão de alternância na navbar
+- ✅ Persistência no localStorage
+- ✅ Detecção automática da preferência do sistema
+- ✅ Transições suaves entre temas
+- ✅ Suporte completo em todos os componentes
+
+### Melhorias de Performance
+- ✅ Transições CSS otimizadas
+- ✅ Lazy loading de componentes
+- ✅ Bundle size otimizado
 
 ## 📄 Licença
 
@@ -171,5 +229,18 @@ Se precisar de ajuda ou tiver dúvidas:
 
 ---
 
-**Desenvolvido com ❤️ usando React e Tailwind CSS**
+**Desenvolvido com ❤️ usando React, Tailwind CSS e muito café ☕**
+
+### Changelog
+
+**v2.0** - Tema Claro/Escuro
+- Adicionado sistema completo de tema claro/escuro
+- Implementada persistência da preferência do usuário
+- Melhoradas as transições e animações
+- Otimizada a acessibilidade
+
+**v1.0** - Versão Inicial
+- Portfólio responsivo básico
+- Seções principais implementadas
+- Design moderno com Tailwind CSS
 
